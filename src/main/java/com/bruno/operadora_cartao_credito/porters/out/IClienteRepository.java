@@ -1,0 +1,14 @@
+package com.bruno.operadora_cartao_credito.porters.out;
+
+import com.bruno.operadora_cartao_credito.application.domain.ClienteDomain;
+
+import java.util.Optional;
+
+public interface ClienteRepository {
+
+    ClienteDomain salvar(ClienteDomain clienteDomain);
+
+    Boolean buscarUsuarioPorEmail(String email);
+
+    Optional<ClienteDomain> buscaUsuarioPorCpf(String cpf);
+}
