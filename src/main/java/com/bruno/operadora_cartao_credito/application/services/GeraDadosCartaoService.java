@@ -1,8 +1,6 @@
 package com.bruno.operadora_cartao_credito.application.services;
 
 
-import com.bruno.operadora_cartao_credito.application.domain.CartaoDomain;
-import com.bruno.operadora_cartao_credito.application.domain.ClienteDomain;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,13 +12,13 @@ public class GeraDadosCartaoService {
     private static final String PREFIXO_NUMERO_CARTAO = "4000";
     private static final int TAMANHO_NUMERO_CARTAO = 16;
 
-    public CartaoDomain gerarParaCliente(ClienteDomain cliente) {
+    public CartaoEntity gerarParaCliente(ClienteEntity cliente) {
         String numeroCartao = gerarNumeroCartao();
         LocalDate dataExpiracao = gerarDataExpiracao();
         String cvv = gerarCVV();
         double limiteCredito = determinarLimiteCredito(cliente);
 
-        return new CartaoDomain(numeroCartao, dataExpiracao, cvv, limiteCredito, cliente, cliente.getCartao().getUltimaAlteracaoLimite(),
+        return new CartaoEntity(numeroCartao, dataExpiracao, cvv, limiteCredito, cliente, cliente.getCartao().getUltimaAlteracaoLimite(),
                 cliente.getCartao().getDataVencimentoFatura());
     }
 
@@ -45,7 +43,7 @@ public class GeraDadosCartaoService {
         return String.format("%03d", random.nextInt(1000));
     }
 
-    private double determinarLimiteCredito(ClienteDomain cliente) {
+    private double determinarLimiteCredito(ClienteEntity cliente) {
         int idade = cliente.getIdade();
         double salario = cliente.getRendaMensal();
 
