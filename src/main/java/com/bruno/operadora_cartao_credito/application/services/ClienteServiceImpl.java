@@ -2,19 +2,26 @@ package com.bruno.operadora_cartao_credito.application.services;
 
 
 
+import com.bruno.operadora_cartao_credito.adapters.in.IClientService;
 import com.bruno.operadora_cartao_credito.application.domain.CartaoDomain;
 import com.bruno.operadora_cartao_credito.application.domain.ClienteDomain;
 import com.bruno.operadora_cartao_credito.porters.out.IClienteRepository;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
-public class ClienteService {
+
+public class ClienteServiceImpl implements IClientService {
 
     private final IClienteRepository clienteRepository;
     private final GeraDadosCartaoService geraCartao;
 
+    public ClienteServiceImpl(IClienteRepository clienteRepository, GeraDadosCartaoService geraCartao) {
+        this.clienteRepository = clienteRepository;
+        this.geraCartao = geraCartao;
+    }
+
+    @Override
     public ClienteDomain solicitarCartao(ClienteDomain cliente) {
         if (clienteRepository.buscarUsuarioPorEmail(cliente.getEmail())) {
             throw new IllegalArgumentException("Usuário já possui um cartão.");
@@ -26,6 +33,7 @@ public class ClienteService {
 
     }
 
+    @Override
     public ClienteDomain buscarPorCpf(String cpf) {
         return clienteRepository.buscaUsuarioPorCpf(cpf).
                 orElseThrow(()-> new IllegalArgumentException("Cliente não encontrado"));
