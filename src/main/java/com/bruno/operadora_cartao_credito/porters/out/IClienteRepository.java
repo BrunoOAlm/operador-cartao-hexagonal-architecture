@@ -4,7 +4,7 @@ import com.bruno.operadora_cartao_credito.application.domain.ClienteDomain;
 
 import java.util.Optional;
 
-public interface ClienteRepository {
+public interface IClienteRepository {
 
     ClienteDomain salvar(ClienteDomain clienteDomain);
 

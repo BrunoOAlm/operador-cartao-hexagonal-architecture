@@ -1,6 +1,6 @@
 package com.bruno.operadora_cartao_credito.application.domain;
 
-public class EnderecoEntity {
+public class EnderecoDomain {
 
 
     private Long id;
@@ -10,12 +10,12 @@ public class EnderecoEntity {
     private String cidade;
     private String estado;
     private String cep;
-    private ClienteEntity cliente;
+    private ClienteDomain cliente;
 
-    public EnderecoEntity() {
+    public EnderecoDomain() {
     }
 
-    public EnderecoEntity(Long id, String rua, Long numero, String complemento, String cidade, String estado, String cep, ClienteEntity cliente) {
+    public EnderecoDomain(Long id, String rua, Long numero, String complemento, String cidade, String estado, String cep, ClienteDomain cliente) {
         this.id = id;
         this.rua = rua;
         this.numero = numero;
@@ -82,11 +82,11 @@ public class EnderecoEntity {
         this.estado = estado;
     }
 
-    public ClienteEntity getCliente() {
+    public ClienteDomain getCliente() {
         return cliente;
     }
 
-    public void setCliente(ClienteEntity cliente) {
+    public void setCliente(ClienteDomain cliente) {
         this.cliente = cliente;
     }
 }

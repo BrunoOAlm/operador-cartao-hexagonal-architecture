@@ -1,4 +1,4 @@
-package com.javanauta.operadoracartao.infrastructure.entities;
+package com.bruno.operadora_cartao_credito.adapters.out.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

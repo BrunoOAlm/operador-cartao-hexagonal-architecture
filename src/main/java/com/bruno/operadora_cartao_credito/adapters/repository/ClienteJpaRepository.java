@@ -1,13 +1,14 @@
-package com.javanauta.operadoracartao.infrastructure.repositories;
+package com.bruno.operadora_cartao_credito.adapters.repository;
 
-import com.javanauta.operadoracartao.infrastructure.entities.ClienteEntity;
+
+import com.bruno.operadora_cartao_credito.adapters.out.entities.ClienteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 public interface ClienteJpaRepository extends JpaRepository<ClienteEntity, Long> {
 
-    boolean existsByEmail(String email);
+    Boolean existsByEmail(String email);
 
     Optional<ClienteEntity> findByCpf(String cpf);
 
